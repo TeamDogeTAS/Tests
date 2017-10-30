@@ -36,12 +36,12 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
 
 }
-//test {
-//    testLogging {
-//        showStandardStreams = true
-//    }
-//    systemProperties(System.getProperties())
-//    maxParallelForks = 8
-//    ignoreFailures true
-//}
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+    systemProperties(System.getProperties())
+    maxParallelForks = 8
+    ignoreFailures true
+}
 gradle.startParameter.continueOnFailure = true

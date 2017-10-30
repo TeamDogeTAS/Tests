@@ -14,5 +14,5 @@ import org.openqa.selenium.WebDriver;
 public class MyTSATest {
 
     @Managed
-    WebDriver driver;
+    public WebDriver driver;
 }
