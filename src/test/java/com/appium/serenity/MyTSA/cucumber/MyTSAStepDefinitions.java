@@ -1,6 +1,6 @@
-package com.appium.serenity.cucumber;
+package com.appium.serenity.MyTSA.cucumber;
 
-import com.appium.serenity.steps.MyTsaSteps;
+import com.appium.serenity.MyTSA.steps.MyTsaSteps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

@@ -1,4 +1,4 @@
-package com.appium.serenity.pages;
+package com.appium.serenity.MyTSA.pages;
 
 import com.google.common.base.Predicate;
 

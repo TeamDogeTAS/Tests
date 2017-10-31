@@ -1,4 +1,4 @@
-package com.appium.serenity.runners;
+package com.appium.serenity.MyTSA.runners;
 
 
 import cucumber.api.CucumberOptions;
@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features = "/Users/jaeshin/AutomationTest/src/test/resources/features/MyTSATest.feature",
-                    glue = "com.appium.serenity.cucumber")
+@CucumberOptions(features = "/Users/jaeshin/Test Automation/AutomationTest/src/test/resources/features/MyTSATest.feature",
+                    glue = "com.appium.serenity.MyTSA.cucumber")
 public class MyTSATest {
 
     @Managed

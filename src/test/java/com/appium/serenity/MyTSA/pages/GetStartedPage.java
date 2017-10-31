@@ -1,4 +1,4 @@
-package com.appium.serenity.pages;
+package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;

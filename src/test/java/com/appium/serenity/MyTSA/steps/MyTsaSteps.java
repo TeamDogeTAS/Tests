@@ -1,8 +1,8 @@
-package com.appium.serenity.steps;
+package com.appium.serenity.MyTSA.steps;
 
 
-import com.appium.serenity.pages.GetStartedPage;
-import com.appium.serenity.pages.PreliminaryUpdateCheckPage;
+import com.appium.serenity.MyTSA.pages.GetStartedPage;
+import com.appium.serenity.MyTSA.pages.PreliminaryUpdateCheckPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.slf4j.Logger;
