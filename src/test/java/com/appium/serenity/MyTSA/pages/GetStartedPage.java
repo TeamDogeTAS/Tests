@@ -21,6 +21,10 @@ public class GetStartedPage extends BasePage{
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_get_started")
     private WebElement getStartedButton;
 
+    //@iOSFindBy(accessibility = "Get Started")
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_button_skip")
+    private WebElement skipButton;
+
 
     public void isMyTsaHeaderDisplayed(){
         WebDriverWait wait = new WebDriverWait(getDriver(), 60);
