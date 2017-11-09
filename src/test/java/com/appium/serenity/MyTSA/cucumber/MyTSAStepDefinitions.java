@@ -17,22 +17,24 @@ public class MyTSAStepDefinitions {
     MyTsaSteps myTsaSteps;
 
 
-    @Given("^The MyTSA update page opens$")
+    @Given("^The MyTSA app opens and updates$")
     public void openMyTsa() {
         LOGGER.info("Main page opens up");
         myTsaSteps.verifyUpdateCheckPage();
-    }
-
-
-    @When("^After updating, the Get Started page is displayed$")
-    public void updateProgressBar() {
         LOGGER.info("'updating status and wait times' Progress bar displays");
         myTsaSteps.verifyGetStartedHeader();
-    }
-
-    @Then("^The Get Started Button appears$")
-    public void welcomeScreenAppears() {
         LOGGER.info("Welcome to MyTSA screen appears");
         myTsaSteps.verifyGetStartedBtn();
+    }
+
+
+    @When("^updates are finished, the User goes through the setup process and allows all permissions$")
+    public void updateProgressBar() {
+
+    }
+
+    @Then("^The My Favorites Page appears$")
+    public void welcomeScreenAppears() {
+
     }
 }
