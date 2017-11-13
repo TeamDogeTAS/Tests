@@ -27,14 +27,14 @@ public class GetStartedPage extends BasePage{
 
 
     public void isMyTsaHeaderDisplayed(){
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-        wait.until(ExpectedConditions.visibilityOf(myTsaWelcomeHeader));
-        System.out.println("MyTSA Welcome Header Found");
+        waitForElement(myTsaWelcomeHeader);
         }
 
     public void isGetStartedBtnDisplayed(){
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-        wait.until(ExpectedConditions.visibilityOf(getStartedButton));
-        System.out.println("Get Started Button Found");
+        waitForElement(getStartedButton);
+    }
+
+    public void clickSkipButton() {
+        waitForElement(skipButton).click();
     }
 }

@@ -7,9 +7,14 @@ import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BasePage extends PageObject {
 
@@ -25,5 +30,17 @@ public class BasePage extends PageObject {
             }
 
         });
+    }
+
+    public WebElement waitForElement(WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return element;
+    }
+
+    public WebElement waitForElementToBeClickable(WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        return element;
     }
 }

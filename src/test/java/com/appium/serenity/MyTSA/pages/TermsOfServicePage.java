@@ -14,4 +14,14 @@ public class TermsOfServicePage extends BasePage{
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_disagree_and_exit")
     private WebElement disagreeButton;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/top")
+    private WebElement termsPageHeader;
+
+    public void isTermsPageDisplayed() {
+        waitForElement(termsPageHeader);
+    }
+    public void clickAgreeButton(){
+        waitForElementToBeClickable(agreeButton).click();
+    }
 }

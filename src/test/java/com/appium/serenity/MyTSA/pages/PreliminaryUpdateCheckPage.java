@@ -25,7 +25,6 @@ public class PreliminaryUpdateCheckPage extends BasePage{
         getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebDriverWait wait = new WebDriverWait(getDriver(), 60);
         wait.until(ExpectedConditions.visibilityOf(tsaUpdatePage));
-        System.out.println("TSA update page Found");
     }
 
 }

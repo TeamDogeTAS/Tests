@@ -21,5 +21,17 @@ public class ReportWaitTimesPage extends BasePage {
     @AndroidFindBy(id = "com.android.packageinstaller:id/permission_allow_button")
     private WebElement allowButton;
 
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_location_header_layout")
+    private WebElement reportWaitHeader;
 
+    public void isReportWaitTimesPageDisplayed(){
+        waitForElement(reportWaitHeader);
+    }
+    public void clickYesPlease() {
+        waitForElementToBeClickable(yesPleaseButton).click();
+    }
+
+    public void allowLocationServices() {
+        waitForElementToBeClickable(allowButton).click();
+    }
 }
