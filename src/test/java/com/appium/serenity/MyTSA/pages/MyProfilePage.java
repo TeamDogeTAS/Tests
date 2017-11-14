@@ -4,22 +4,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.startsWith;
-
-
-public class MyAirportsPage extends BasePage{
-
-    public MyAirportsPage(WebDriver driver) {
+public class MyProfilePage extends BasePage{
+    public MyProfilePage(WebDriver driver) {
         super(driver);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
     private WebElement pageHeader;
-
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
-    private WebElement searchIcon;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
     private WebElement myAirportsTab;
@@ -36,12 +27,20 @@ public class MyAirportsPage extends BasePage{
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
     private WebElement profileTab;
 
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/about_wait_times_banner_text_view")
-    private WebElement waitTimeBanner;
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/preferences_known_traveler_number")
+    private WebElement travelerNumber;
 
-    public void verifyCorrectHeaderIsDisplayed(String header){
-        waitForElement(pageHeader);
-        assertThat(pageHeader.getText(), equalToIgnoringCase(header));
-        assertThat(waitTimeBanner.getText(), startsWith("Don't forget"));
-    }
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/mockLocationSwitch")
+    private WebElement mockLocation;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_launch_tutorial")
+    private WebElement launchTutorial;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_about_wait_times")
+    private WebElement aboutWaitTimes;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_app_version_value")
+    private WebElement appVersion;
+
+
 }

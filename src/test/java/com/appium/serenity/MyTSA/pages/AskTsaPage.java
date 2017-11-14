@@ -4,22 +4,14 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.startsWith;
+public class AskTsaPage extends BasePage {
 
-
-public class MyAirportsPage extends BasePage{
-
-    public MyAirportsPage(WebDriver driver) {
+    public AskTsaPage(WebDriver driver) {
         super(driver);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
     private WebElement pageHeader;
-
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
-    private WebElement searchIcon;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
     private WebElement myAirportsTab;
@@ -36,12 +28,18 @@ public class MyAirportsPage extends BasePage{
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
     private WebElement profileTab;
 
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/about_wait_times_banner_text_view")
-    private WebElement waitTimeBanner;
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_contact_center_phone")
+    private WebElement contactPhone;
 
-    public void verifyCorrectHeaderIsDisplayed(String header){
-        waitForElement(pageHeader);
-        assertThat(pageHeader.getText(), equalToIgnoringCase(header));
-        assertThat(waitTimeBanner.getText(), startsWith("Don't forget"));
-    }
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_contact_center_email")
+    private WebElement contactEmail;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_cares_phone")
+    private WebElement caresPhone;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_website_link")
+    private WebElement tsaWebsite;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/item_twitter")
+    private WebElement askTsaTwitter;
 }

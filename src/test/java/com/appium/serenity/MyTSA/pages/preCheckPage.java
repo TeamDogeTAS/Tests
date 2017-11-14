@@ -4,22 +4,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.startsWith;
-
-
-public class MyAirportsPage extends BasePage{
-
-    public MyAirportsPage(WebDriver driver) {
+public class preCheckPage extends BasePage{
+    public preCheckPage(WebDriver driver) {
         super(driver);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
     private WebElement pageHeader;
-
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
-    private WebElement searchIcon;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
     private WebElement myAirportsTab;
@@ -36,12 +27,15 @@ public class MyAirportsPage extends BasePage{
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
     private WebElement profileTab;
 
-    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/about_wait_times_banner_text_view")
-    private WebElement waitTimeBanner;
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/precheck_apply_button")
+    private WebElement applyButton;
 
-    public void verifyCorrectHeaderIsDisplayed(String header){
-        waitForElement(pageHeader);
-        assertThat(pageHeader.getText(), equalToIgnoringCase(header));
-        assertThat(waitTimeBanner.getText(), startsWith("Don't forget"));
-    }
+    @AndroidFindBy(accessibility = "View Participating Airports Link")
+    private WebElement viewAirports;
+
+    @AndroidFindBy(accessibility = "View Participating Airlines Link")
+    private WebElement viewAirlines;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/details_button")
+    private WebElement learnMore;
 }

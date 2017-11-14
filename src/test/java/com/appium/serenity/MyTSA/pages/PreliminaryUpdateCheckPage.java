@@ -22,9 +22,7 @@ public class PreliminaryUpdateCheckPage extends BasePage{
 
 
     public void isUpdateCheckPageDisplayed() {
-        getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-        wait.until(ExpectedConditions.visibilityOf(tsaUpdatePage));
+        waitForElement(tsaUpdatePage);
     }
 
 }
