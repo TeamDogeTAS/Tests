@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class TermsOfServicePage extends BasePage{
+
     public TermsOfServicePage(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +22,7 @@ public class TermsOfServicePage extends BasePage{
     public void isTermsPageDisplayed() {
         waitForElement(termsPageHeader);
     }
+
     public void clickAgreeButton(){
         waitForElementToBeClickable(agreeButton).click();
     }

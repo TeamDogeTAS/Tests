@@ -1,21 +1,18 @@
 package com.appium.serenity.MyTSA.cucumber;
 
-import com.appium.serenity.MyTSA.pages.ReportWaitTimesPage;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 public class MyTSAStepDefinitions {
 
     @Steps
     MyTsaSteps myTsaSteps;
-
-
 
     @Given("^The MyTSA app opens and updates$")
     public void openMyTsa() {
@@ -31,8 +28,14 @@ public class MyTSAStepDefinitions {
         myTsaSteps.allowLocationServiceSetUp();
     }
 
-    @Then("^The My Favorites Page appears$")
+    @And("^the My Favorites Page appears$")
     public void welcomeScreenAppears() {
         myTsaSteps.verifyMyAirportsPage();
     }
+
+    @Then("^all pages will be checked for correctness$")
+    public void allPagesWillBeCheckedForCorrectness() {
+        myTsaSteps.checkPagesForCorrectness();
+    }
+
 }

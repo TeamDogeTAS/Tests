@@ -2,8 +2,10 @@ package com.appium.serenity.MyTSA.pages;
 
 import com.google.common.base.Predicate;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import net.serenitybdd.core.pages.PageObject;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.webdriver.WebDriverFacade;
 
 import org.openqa.selenium.WebDriver;
@@ -12,11 +14,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class BasePage extends PageObject {
+
+    @Managed
+    public AppiumDriver driver;
 
     public BasePage(final WebDriver driver) {
         super(driver, new Predicate<PageObject>() {

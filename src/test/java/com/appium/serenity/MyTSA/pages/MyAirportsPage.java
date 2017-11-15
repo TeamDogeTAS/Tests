@@ -4,9 +4,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.startsWith;
+import static org.assertj.core.api.Assertions.*;
 
 
 public class MyAirportsPage extends BasePage{
@@ -16,32 +14,49 @@ public class MyAirportsPage extends BasePage{
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
-    private WebElement pageHeader;
+    public WebElement pageHeader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
     private WebElement searchIcon;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
-    private WebElement myAirportsTab;
+    public WebElement myAirportsTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/guide")
-    private WebElement canIBringTab;
+    public WebElement canIBringTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/pre_check")
-    private WebElement preCheckTab;
+    public WebElement preCheckTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa")
-    private WebElement askTsaTab;
+    public WebElement askTsaTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
-    private WebElement profileTab;
+    public WebElement profileTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/about_wait_times_banner_text_view")
     private WebElement waitTimeBanner;
 
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/user_location_text_view")
+    private WebElement locationText;
+
     public void verifyCorrectHeaderIsDisplayed(String header){
         waitForElement(pageHeader);
-        assertThat(pageHeader.getText(), equalToIgnoringCase(header));
-        assertThat(waitTimeBanner.getText(), startsWith("Don't forget"));
+        assertThat(pageHeader.getText()).isEqualToIgnoringCase(header);
+        assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
+    }
+
+    public void verifyAllExpectedTabsAreDisplayed() {
+        checkTab(canIBringTab, "Can I Bring?");
+        checkTab(preCheckTab, "TSA Pre✓®");
+        checkTab(askTsaTab,"AskTSA");
+        checkTab(profileTab, "My Profile");
+    }
+
+    public void checkTab(WebElement element, String headerText){
+        waitForElementToBeClickable(element);
+        element.click();
+        waitForElement(pageHeader);
+        assertThat(pageHeader.getText()).isEqualToIgnoringCase(headerText);
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ReportWaitTimesPage extends BasePage {
+
     public ReportWaitTimesPage(WebDriver driver) {
         super(driver);
     }
@@ -27,6 +28,7 @@ public class ReportWaitTimesPage extends BasePage {
     public void isReportWaitTimesPageDisplayed(){
         waitForElement(reportWaitHeader);
     }
+
     public void clickYesPlease() {
         waitForElementToBeClickable(yesPleaseButton).click();
     }

@@ -3,14 +3,9 @@ package com.appium.serenity.MyTSA.steps;
 
 import com.appium.serenity.MyTSA.pages.*;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MyTsaSteps extends ScenarioSteps{
-
-//    private static Logger LOGGER = LoggerFactory.getLogger(MyTsaSteps.class);
 
     PreliminaryUpdateCheckPage preliminaryUpdateCheckPage;
     GetStartedPage getStartedPage;
@@ -50,5 +45,9 @@ public class MyTsaSteps extends ScenarioSteps{
     @Step
     public void verifyMyAirportsPage() {
         myAirportsPage.verifyCorrectHeaderIsDisplayed("My Airports");
+    }
+    @Step
+    public void checkPagesForCorrectness() {
+        myAirportsPage.verifyAllExpectedTabsAreDisplayed();
     }
 }
