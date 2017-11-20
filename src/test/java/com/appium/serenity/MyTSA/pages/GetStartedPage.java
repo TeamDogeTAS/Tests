@@ -20,7 +20,7 @@ public class GetStartedPage extends BasePage{
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_get_started")
     private WebElement getStartedButton;
 
-    //@iOSFindBy(accessibility = "Get Started")
+    @iOSFindBy(accessibility = "Skip")
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_button_skip")
     private WebElement skipButton;
 

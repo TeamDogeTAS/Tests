@@ -20,14 +20,23 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.6.6")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.7.4")
     }
 }
 
+//test {
+//    systemProperty {
+//        'properties', '/src/test/resources/serenity.${testEnvironment}.properties'
+//        'testEnvironment', '${testEnvironment}'
+//        'enableSerenity', 'true'
+//    }
+//    include '**/*Test.class'
+//}
+
 dependencies {
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.6.6'
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.5.15'
-    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.6.6'
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.7.4'
+    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.6.4'
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.7.4'
 
     testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
     testCompile group: 'junit', name: 'junit', version: '4.12'

@@ -12,14 +12,17 @@ public class GetNotifiedPage extends BasePage{
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_allow")
-    //@iOSFindBy(accessibility = )
+    @iOSFindBy(accessibility = "Next")
     WebElement nextButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_notification_header_layout")
+    @iOSFindBy(accessibility = "Get notified")
     WebElement getNotifiedHeader;
 
     public void clickNext() {
         waitForElementToBeClickable(nextButton).click();
+        //ios specific
+        getDriver().switchTo().alert().accept();
     }
 
     public void isGetNotifiedPageDisplayed(){

@@ -1,6 +1,7 @@
 package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -11,6 +12,7 @@ public class ReportWaitTimesPage extends BasePage {
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_allow")
+    @iOSFindBy(accessibility = "Next")
     private WebElement yesPleaseButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_do_not_allow")
@@ -23,6 +25,7 @@ public class ReportWaitTimesPage extends BasePage {
     private WebElement allowButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_location_header_layout")
+    @iOSFindBy(accessibility = "Report wait times")
     private WebElement reportWaitHeader;
 
     public void isReportWaitTimesPageDisplayed(){

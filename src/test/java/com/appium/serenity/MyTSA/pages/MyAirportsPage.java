@@ -1,8 +1,13 @@
 package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.lang.reflect.Array;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -14,6 +19,7 @@ public class MyAirportsPage extends BasePage{
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
+    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"My Airports\"]")
     public WebElement pageHeader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
@@ -47,10 +53,15 @@ public class MyAirportsPage extends BasePage{
     }
 
     public void verifyAllExpectedTabsAreDisplayed() {
-        checkTab(canIBringTab, "Can I Bring?");
-        checkTab(preCheckTab, "TSA Pre✓®");
-        checkTab(askTsaTab,"AskTSA");
-        checkTab(profileTab, "My Profile");
+        checkTabs("Can I Bring?", "TSA Pre✓®", "AskTSA", "My Profile", "My Airports");
+    }
+
+    public void checkTabs(String string1, String string2, String string3, String string4, String string5){
+        String tabHeaders[] = {string1, string2, string3, string4, string5};
+        WebElement tabs[] = {canIBringTab, preCheckTab, askTsaTab, profileTab, myAirportsTab};
+        for (int i = 0; i<tabs.length; i++){
+            checkTab(tabs[i], tabHeaders[i]);
+        }
     }
 
     public void checkTab(WebElement element, String headerText){
