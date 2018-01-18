@@ -22,7 +22,7 @@ public class GetNotifiedPage extends BasePage{
     public void clickNext() {
         waitForElementToBeClickable(nextButton).click();
         //ios specific
-        getDriver().switchTo().alert().accept();
+//        getDriver().switchTo().alert().accept();
     }
 
     public void isGetNotifiedPageDisplayed(){

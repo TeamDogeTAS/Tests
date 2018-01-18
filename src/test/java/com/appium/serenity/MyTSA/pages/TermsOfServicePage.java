@@ -25,6 +25,7 @@ public class TermsOfServicePage extends BasePage{
 
     public void isTermsPageDisplayed() {
         waitForElement(termsPageHeader);
+        waitForElement(agreeButton);
     }
 
     public void clickAgreeButton(){

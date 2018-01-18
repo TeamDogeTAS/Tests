@@ -34,6 +34,9 @@ public class MyTsaSteps extends ScenarioSteps{
         reportWaitTimesPage.isReportWaitTimesPageDisplayed();
         reportWaitTimesPage.clickYesPlease();
         reportWaitTimesPage.allowLocationServices();
+    }
+    @Step
+    public void agreeToTerms(){
         termsOfServicePage.isTermsPageDisplayed();
         termsOfServicePage.clickAgreeButton();
     }
@@ -43,9 +46,15 @@ public class MyTsaSteps extends ScenarioSteps{
         getNotifiedPage.clickNext();
     }
     @Step
-    public void verifyMyAirportsPage() {
-        myAirportsPage.verifyCorrectHeaderIsDisplayed("My Airports");
+    public void verifyMyAirportsPageOnAndroid() {
+        myAirportsPage.verifyCorrectHeaderIsDisplayedAndroid("My Airports");
     }
+
+    @Step
+    public void verifyMyAirportsPageOnIos() {
+        myAirportsPage.verifyCorrectHeaderIsDisplayediOS();
+    }
+
     @Step
     public void checkPagesForCorrectness() {
         myAirportsPage.verifyAllExpectedTabsAreDisplayed();
