@@ -1,12 +1,12 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.utils.BasePage;
+import com.appium.serenity.MyTSA.util.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -22,15 +22,15 @@ public class TermsOfServicePage extends PageObject{
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_agree")
     @iOSFindBy(accessibility = "Agree")
-    private WebElement agreeButton;
+    private MobileElement agreeButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_disagree_and_exit")
     @iOSFindBy(accessibility = "disagree")
-    private WebElement disagreeButton;
+    private MobileElement disagreeButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/top")
     @iOSFindBy(accessibility = "You're almost there")
-    private WebElement termsPageHeader;
+    private MobileElement termsPageHeader;
 
     public void isTermsPageDisplayed() {
         BasePage.waitForElement(termsPageHeader);

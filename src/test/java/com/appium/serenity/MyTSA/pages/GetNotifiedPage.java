@@ -1,12 +1,12 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.utils.BasePage;
+import com.appium.serenity.MyTSA.util.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -22,11 +22,11 @@ public class GetNotifiedPage extends PageObject {
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_allow")
     @iOSFindBy(accessibility = "Next")
-    WebElement nextButton;
+    MobileElement nextButton;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_notification_header_layout")
     @iOSFindBy(accessibility = "Get notified")
-    WebElement getNotifiedHeader;
+    MobileElement getNotifiedHeader;
 
     public void clickNext() {
         BasePage.waitForElementToBeClickable(nextButton).click();

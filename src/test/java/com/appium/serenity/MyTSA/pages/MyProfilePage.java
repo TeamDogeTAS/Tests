@@ -1,6 +1,7 @@
 package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import net.serenitybdd.core.pages.PageObject;
@@ -37,19 +38,19 @@ public class MyProfilePage extends PageObject {
 //    private WebElement profileTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/preferences_known_traveler_number")
-    private WebElement travelerNumber;
+    private MobileElement travelerNumber;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/mockLocationSwitch")
-    private WebElement mockLocation;
+    private MobileElement mockLocation;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_launch_tutorial")
-    private WebElement launchTutorial;
+    private MobileElement launchTutorial;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_about_wait_times")
-    private WebElement aboutWaitTimes;
+    private MobileElement aboutWaitTimes;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_app_version_value")
-    private WebElement appVersion;
+    private MobileElement appVersion;
 
 
 }

@@ -1,6 +1,7 @@
 package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import net.serenitybdd.core.pages.PageObject;
@@ -37,14 +38,14 @@ public class preCheckPage extends PageObject {
 //    private WebElement profileTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/precheck_apply_button")
-    private WebElement applyButton;
+    private MobileElement applyButton;
 
     @AndroidFindBy(accessibility = "View Participating Airports Link")
-    private WebElement viewAirports;
+    private MobileElement viewAirports;
 
     @AndroidFindBy(accessibility = "View Participating Airlines Link")
-    private WebElement viewAirlines;
+    private MobileElement viewAirlines;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/details_button")
-    private WebElement learnMore;
+    private MobileElement learnMore;
 }

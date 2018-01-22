@@ -1,6 +1,7 @@
 package com.appium.serenity.MyTSA.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import net.serenitybdd.core.pages.PageObject;
@@ -37,24 +38,24 @@ public class CanIBringPage extends PageObject {
 //    private WebElement pageHeader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/item_text_view")
-    private WebElement searchBar;
+    private MobileElement searchBar;
 
     @AndroidFindBy(accessibility = "Travel Checklist Link")
-    private WebElement travelChecklist;
+    private MobileElement travelChecklist;
 
     @AndroidFindBy(accessibility = "Identification Link")
-    private WebElement identification;
+    private MobileElement identification;
 
     @AndroidFindBy(accessibility = "Liquids Rule Link")
-    private WebElement liquidsRule;
+    private MobileElement liquidsRule;
 
     @AndroidFindBy(accessibility = "Disabilities and Medical Conditions Link")
-    private WebElement disabilitiesAndMedicalConditions;
+    private MobileElement disabilitiesAndMedicalConditions;
 
     @AndroidFindBy(accessibility = "Military Travel Link")
-    private WebElement militaryTravel;
+    private MobileElement militaryTravel;
 
     @AndroidFindBy(accessibility = "Travel with Children Link")
-    private WebElement travelWithChildren;
+    private MobileElement travelWithChildren;
 
 }

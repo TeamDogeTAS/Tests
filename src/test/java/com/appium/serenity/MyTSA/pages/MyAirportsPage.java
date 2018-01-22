@@ -1,12 +1,12 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.utils.BasePage;
+import com.appium.serenity.MyTSA.util.BasePage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -24,41 +24,41 @@ public class MyAirportsPage extends PageObject {
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
-    public WebElement pageHeader;
+    public MobileElement pageHeader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
     @iOSFindBy(accessibility = "Search airports")
-    private WebElement searchIcon;
+    private MobileElement searchIcon;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
     @iOSFindBy(accessibility = "My Airports")
-    public WebElement myAirportsTab;
+    public MobileElement myAirportsTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/guide")
     @iOSFindBy(accessibility = "Can I Bring?")
-    public WebElement canIBringTab;
+    public MobileElement canIBringTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/pre_check")
     @iOSFindBy(accessibility = "TSA Pre✓®")
-    public WebElement preCheckTab;
+    public MobileElement preCheckTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa")
     @iOSFindBy(accessibility = "AskTSA")
-    public WebElement askTsaTab;
+    public MobileElement askTsaTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
     @iOSFindBy(accessibility = "Profile")
-    public WebElement profileTab;
+    public MobileElement profileTab;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/about_wait_times_banner_text_view")
     @iOSFindBy(accessibility = "Don't forget—you can report wait times once you arrive at the airport! Tap here to learn more.")
-    private WebElement waitTimeBanner;
+    private MobileElement waitTimeBanner;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/user_location_text_view")
-    private WebElement locationText;
+    private MobileElement locationText;
 
     @iOSFindBy(accessibility = "Favorite Airports")
-    private WebElement favoritesText;
+    private MobileElement favoritesText;
 
     public void verifyCorrectHeaderIsDisplayedAndroid(String header){
         BasePage.waitForElement(pageHeader);
@@ -77,13 +77,13 @@ public class MyAirportsPage extends PageObject {
 
     public void checkTabs(String string1, String string2, String string3, String string4, String string5){
         String tabHeaders[] = {string1, string2, string3, string4, string5};
-        WebElement tabs[] = {canIBringTab, preCheckTab, askTsaTab, profileTab, myAirportsTab};
+        MobileElement tabs[] = {canIBringTab, preCheckTab, askTsaTab, profileTab, myAirportsTab};
         for (int i = 0; i<tabs.length; i++){
             checkTab(tabs[i], tabHeaders[i]);
         }
     }
 
-    public void checkTab(WebElement element, String headerText){
+    public void checkTab(MobileElement element, String headerText){
         BasePage.waitForElementToBeClickable(element);
         element.click();
         BasePage.waitForElement(pageHeader);
