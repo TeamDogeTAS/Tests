@@ -2,6 +2,7 @@ package com.appium.serenity.MyTSA.steps;
 
 import com.appium.serenity.MyTSA.pages.*;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -23,8 +24,9 @@ public class BeforeAndAfter {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         if (os.equalsIgnoreCase("android")) {
+            caps.setCapability(AndroidMobileCapabilityType.AVD, "PixelXL");
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, "PixelXL");
-            caps.setCapability(MobileCapabilityType.APP, "/Users/jaeshin/TSA/IPA for testing/app-Ite-debug.apk");
+            caps.setCapability(MobileCapabilityType.APP, "/Users/jaeshin/TSA/mytsa-android/app/build/outputs/apk/Ite/debug/app-Ite-debug.apk");
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
         } else {

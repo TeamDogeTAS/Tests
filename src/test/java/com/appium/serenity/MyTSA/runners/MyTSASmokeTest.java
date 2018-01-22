@@ -3,14 +3,13 @@ package com.appium.serenity.MyTSA.runners;
 
 import com.appium.serenity.MyTSA.steps.BeforeAndAfter;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
-import io.appium.java_client.AppiumDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 @RunWith(SerenityRunner.class)
