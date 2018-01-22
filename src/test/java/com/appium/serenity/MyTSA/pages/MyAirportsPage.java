@@ -1,26 +1,29 @@
 package com.appium.serenity.MyTSA.pages;
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-import java.lang.reflect.Array;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.*;
 
 
-public class MyAirportsPage extends BasePage{
+public class MyAirportsPage extends PageObject {
 
-    public MyAirportsPage(WebDriver driver) {
-        super(driver);
+    public AppiumDriver driver;
+
+    public MyAirportsPage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 60, TimeUnit.SECONDS), this);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
-    @iOSFindBy()
     public WebElement pageHeader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_image_view")
@@ -58,13 +61,13 @@ public class MyAirportsPage extends BasePage{
     private WebElement favoritesText;
 
     public void verifyCorrectHeaderIsDisplayedAndroid(String header){
-        waitForElement(pageHeader);
+        BasePage.waitForElement(pageHeader);
         assertThat(pageHeader.getText()).isEqualToIgnoringCase(header);
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
 
     public void verifyCorrectHeaderIsDisplayediOS(){
-        waitForElement(favoritesText);
+        BasePage.waitForElement(favoritesText);
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
 
@@ -81,9 +84,9 @@ public class MyAirportsPage extends BasePage{
     }
 
     public void checkTab(WebElement element, String headerText){
-        waitForElementToBeClickable(element);
+        BasePage.waitForElementToBeClickable(element);
         element.click();
-        waitForElement(pageHeader);
+        BasePage.waitForElement(pageHeader);
         assertThat(pageHeader.getText()).isEqualToIgnoringCase(headerText);
     }
 }

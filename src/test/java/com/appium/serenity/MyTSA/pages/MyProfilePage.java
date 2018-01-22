@@ -1,13 +1,22 @@
 package com.appium.serenity.MyTSA.pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class MyProfilePage extends BasePage{
+import java.util.concurrent.TimeUnit;
 
-    public MyProfilePage(WebDriver driver) {
-        super(driver);
+public class MyProfilePage extends PageObject {
+
+    public AppiumDriver driver;
+
+    public MyProfilePage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
 //    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")

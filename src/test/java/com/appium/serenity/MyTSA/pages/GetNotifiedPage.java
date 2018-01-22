@@ -1,14 +1,23 @@
 package com.appium.serenity.MyTSA.pages;
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class GetNotifiedPage extends BasePage{
+import java.util.concurrent.TimeUnit;
 
-    public GetNotifiedPage(WebDriver driver) {
-        super(driver);
+public class GetNotifiedPage extends PageObject {
+
+    public AppiumDriver driver;
+
+    public GetNotifiedPage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_allow")
@@ -20,12 +29,10 @@ public class GetNotifiedPage extends BasePage{
     WebElement getNotifiedHeader;
 
     public void clickNext() {
-        waitForElementToBeClickable(nextButton).click();
-        //ios specific
-//        getDriver().switchTo().alert().accept();
+        BasePage.waitForElementToBeClickable(nextButton).click();
     }
 
     public void isGetNotifiedPageDisplayed(){
-        waitForElement(getNotifiedHeader);
+        BasePage.waitForElement(getNotifiedHeader);
     }
 }

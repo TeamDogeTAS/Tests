@@ -1,14 +1,23 @@
 package com.appium.serenity.MyTSA.pages;
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class ReportWaitTimesPage extends BasePage {
+import java.util.concurrent.TimeUnit;
 
-    public ReportWaitTimesPage(WebDriver driver) {
-        super(driver);
+public class ReportWaitTimesPage extends PageObject {
+
+    public AppiumDriver driver;
+
+    public ReportWaitTimesPage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_allow")
@@ -29,14 +38,14 @@ public class ReportWaitTimesPage extends BasePage {
     private WebElement reportWaitHeader;
 
     public void isReportWaitTimesPageDisplayed(){
-        waitForElement(reportWaitHeader);
+        BasePage.waitForElement(reportWaitHeader);
     }
 
     public void clickYesPlease() {
-        waitForElementToBeClickable(yesPleaseButton).click();
+        BasePage.waitForElementToBeClickable(yesPleaseButton).click();
     }
 
     public void allowLocationServices() {
-        waitForElementToBeClickable(allowButton).click();
+        BasePage.waitForElementToBeClickable(allowButton).click();
     }
 }

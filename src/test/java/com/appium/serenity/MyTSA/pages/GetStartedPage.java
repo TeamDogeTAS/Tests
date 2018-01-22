@@ -1,15 +1,24 @@
 package com.appium.serenity.MyTSA.pages;
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.concurrent.TimeUnit;
 
 
-public class GetStartedPage extends BasePage{
+public class GetStartedPage extends PageObject {
 
-    public GetStartedPage(WebDriver driver) {
-        super(driver);
+    public AppiumDriver driver;
+
+    public GetStartedPage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
     @iOSFindBy(accessibility = "MyTSA")
@@ -26,14 +35,14 @@ public class GetStartedPage extends BasePage{
 
 
     public void isMyTsaHeaderDisplayed(){
-        waitForElement(myTsaWelcomeHeader);
+        BasePage.waitForElement(myTsaWelcomeHeader);
         }
 
     public void isGetStartedBtnDisplayed(){
-        waitForElement(getStartedButton);
+        BasePage.waitForElement(getStartedButton);
     }
 
     public void clickSkipButton() {
-        waitForElement(skipButton).click();
+        BasePage.waitForElement(skipButton).click();
     }
 }

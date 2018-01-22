@@ -1,19 +1,25 @@
 package com.appium.serenity.MyTSA.pages;
 
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import io.appium.java_client.remote.IOSMobileCapabilityType;
-import net.serenitybdd.core.webdriver.driverproviders.AppiumDriverCapabilities;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.concurrent.TimeUnit;
 
 
-public class PreliminaryUpdateCheckPage extends BasePage{
+public class PreliminaryUpdateCheckPage extends PageObject {
 
-    public PreliminaryUpdateCheckPage(WebDriver driver) {
-        super(driver);
+    public AppiumDriver driver;
+
+    public PreliminaryUpdateCheckPage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
     @iOSFindBy(accessibility = "TSA_Seal")
@@ -22,8 +28,7 @@ public class PreliminaryUpdateCheckPage extends BasePage{
 
 
     public void isUpdateCheckPageDisplayed() {
-        //ios loads too fast for this
-//        waitForElement(tsaUpdatePage);
+        BasePage.waitForElement(tsaUpdatePage);
     }
 
 }

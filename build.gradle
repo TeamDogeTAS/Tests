@@ -35,7 +35,6 @@ buildscript {
 
 dependencies {
     compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.8.21'
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.6.10'
     compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.8.21'
 
     testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'

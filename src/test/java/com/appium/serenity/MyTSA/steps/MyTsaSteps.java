@@ -2,8 +2,12 @@ package com.appium.serenity.MyTSA.steps;
 
 
 import com.appium.serenity.MyTSA.pages.*;
+import com.appium.serenity.MyTSA.testpages.PreliminaryUpdateCheckPagetest;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import static com.appium.serenity.MyTSA.steps.BeforeAndAfter.driver;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class MyTsaSteps extends ScenarioSteps{
 
@@ -14,6 +18,15 @@ public class MyTsaSteps extends ScenarioSteps{
     TermsOfServicePage termsOfServicePage;
     MyAirportsPage myAirportsPage;
 
+    @Step
+    public void setUp() {
+        preliminaryUpdateCheckPage = new PreliminaryUpdateCheckPage(driver);
+        getStartedPage = new GetStartedPage(driver);
+        reportWaitTimesPage = new ReportWaitTimesPage(driver);
+        getNotifiedPage = new GetNotifiedPage(driver);
+        termsOfServicePage = new TermsOfServicePage(driver);
+        myAirportsPage = new MyAirportsPage(driver);
+    }
     @Step
     public void verifyUpdateCheckPage(){
         preliminaryUpdateCheckPage.isUpdateCheckPageDisplayed();

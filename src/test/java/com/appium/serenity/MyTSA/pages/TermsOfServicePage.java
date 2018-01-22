@@ -1,14 +1,23 @@
 package com.appium.serenity.MyTSA.pages;
 
+import com.appium.serenity.MyTSA.utils.BasePage;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class TermsOfServicePage extends BasePage{
+import java.util.concurrent.TimeUnit;
 
-    public TermsOfServicePage(WebDriver driver) {
-        super(driver);
+public class TermsOfServicePage extends PageObject{
+
+    public AppiumDriver driver;
+
+    public TermsOfServicePage(AppiumDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/onboarding_agree")
@@ -24,11 +33,11 @@ public class TermsOfServicePage extends BasePage{
     private WebElement termsPageHeader;
 
     public void isTermsPageDisplayed() {
-        waitForElement(termsPageHeader);
-        waitForElement(agreeButton);
+        BasePage.waitForElement(termsPageHeader);
+        BasePage.waitForElement(agreeButton);
     }
 
     public void clickAgreeButton(){
-        waitForElementToBeClickable(agreeButton).click();
+        BasePage.waitForElementToBeClickable(agreeButton).click();
     }
 }
