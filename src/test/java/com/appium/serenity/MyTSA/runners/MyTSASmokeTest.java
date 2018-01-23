@@ -3,6 +3,7 @@ package com.appium.serenity.MyTSA.runners;
 
 import com.appium.serenity.MyTSA.steps.BeforeAndAfter;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
@@ -20,10 +21,13 @@ public class MyTSASmokeTest {
     @Steps
     MyTsaSteps myTsaSteps;
 
+    String os = "ios";
+
     @Before
     public void setUp(){
         try {
-            beforeAndAfter.startUp("android");
+            Serenity.setSessionVariable("environment").to(os);
+            beforeAndAfter.startUp(Serenity.sessionVariableCalled("environment"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +38,7 @@ public class MyTSASmokeTest {
         beforeAndAfter.stopDriver();
     }
 
-    @Test
+    @Ignore
     public void androidSmokeTest() {
 
         myTsaSteps.setUp();
@@ -48,19 +52,21 @@ public class MyTSASmokeTest {
 
         myTsaSteps.verifyMyAirportsPageOnAndroid();
 
-        myTsaSteps.checkPagesForCorrectness();
+        myTsaSteps.checkPagesForCorrectnessAndroid();
     }
 
-    @Ignore
+    @Test
     public void iosSmokeTest() {
+        myTsaSteps.setUp();
+
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
 
         myTsaSteps.startSetupProcess();
-        myTsaSteps.agreeToTerms();
+        myTsaSteps.agreeToTermsAndNotification();
 
         myTsaSteps.verifyMyAirportsPageOnIos();
 
-        myTsaSteps.checkPagesForCorrectness();
+        myTsaSteps.checkPagesForCorrectnessIOS();
     }
 }

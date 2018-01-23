@@ -2,12 +2,10 @@ package com.appium.serenity.MyTSA.steps;
 
 
 import com.appium.serenity.MyTSA.pages.*;
-import com.appium.serenity.MyTSA.testpages.PreliminaryUpdateCheckPagetest;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import static com.appium.serenity.MyTSA.steps.BeforeAndAfter.driver;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class MyTsaSteps extends ScenarioSteps{
 
@@ -53,6 +51,7 @@ public class MyTsaSteps extends ScenarioSteps{
         termsOfServicePage.isTermsPageDisplayed();
         termsOfServicePage.clickAgreeButton();
     }
+
     @Step
     public void startSetupProcess() {
         getNotifiedPage.isGetNotifiedPageDisplayed();
@@ -69,7 +68,18 @@ public class MyTsaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void checkPagesForCorrectness() {
+    public void checkPagesForCorrectnessAndroid() {
         myAirportsPage.verifyAllExpectedTabsAreDisplayed();
+    }
+
+    @Step
+    public void checkPagesForCorrectnessIOS() {
+        myAirportsPage.verifyAllExpectedTabsAreDisplayed();
+    }
+
+    @Step
+    public void agreeToTermsAndNotification() {
+        termsOfServicePage.isTermsPageDisplayedIOS();
+        termsOfServicePage.clickAgreeButton();
     }
 }

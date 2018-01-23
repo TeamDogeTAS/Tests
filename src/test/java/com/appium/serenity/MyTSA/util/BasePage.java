@@ -9,13 +9,13 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver
 public class BasePage {
 
     public static MobileElement waitForElement(MobileElement element){
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(ExpectedConditions.visibilityOf(element));
         return element;
     }
 
     public static MobileElement waitForElementToBeClickable(MobileElement element){
-        WebDriverWait wait = new WebDriverWait(getDriver(), 60);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         return element;
     }

@@ -32,6 +32,12 @@ public class TermsOfServicePage extends PageObject{
     @iOSFindBy(accessibility = "You're almost there")
     private MobileElement termsPageHeader;
 
+    public void isTermsPageDisplayedIOS() {
+        driver.switchTo().alert().accept();
+        BasePage.waitForElement(termsPageHeader);
+        BasePage.waitForElement(agreeButton);
+    }
+
     public void isTermsPageDisplayed() {
         BasePage.waitForElement(termsPageHeader);
         BasePage.waitForElement(agreeButton);

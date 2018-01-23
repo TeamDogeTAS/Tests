@@ -30,7 +30,11 @@ public class BeforeAndAfter {
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.0");
         } else {
-            System.out.println("shit");
+            caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITEST");
+            caps.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
+            caps.setCapability(MobileCapabilityType.APP, "/Users/jaeshin/TSA/IPA for testing/MyTSA.app");
+            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
+            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.2");
         }
         return caps;
     }

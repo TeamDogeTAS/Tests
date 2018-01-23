@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -19,23 +20,8 @@ public class AskTsaPage extends PageObject {
         PageFactory.initElements(new AppiumFieldDecorator(driver, 30, TimeUnit.SECONDS), this);
     }
 
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/app_bar_main_text_view")
-//    private WebElement pageHeader;
-//
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/my_airports")
-//    private WebElement myAirportsTab;
-//
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/guide")
-//    private WebElement canIBringTab;
-//
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/pre_check")
-//    private WebElement preCheckTab;
-//
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa")
-//    private WebElement askTsaTab;
-//
-//    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/profile")
-//    private WebElement profileTab;
+    @iOSFindBy(accessibility = "Ask T S A. Heading Level 1")
+    private MobileElement askTSAheader;
 
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/ask_tsa_contact_center_phone")
     private MobileElement contactPhone;

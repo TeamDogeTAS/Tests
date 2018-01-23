@@ -6,6 +6,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.PageFactory;
 
@@ -57,36 +58,48 @@ public class MyAirportsPage extends PageObject {
     @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/user_location_text_view")
     private MobileElement locationText;
 
-    @iOSFindBy(accessibility = "Favorite Airports")
-    private MobileElement favoritesText;
+    @iOSFindBy(accessibility = "My Airports. Heading Level 1")
+    private MobileElement myAirportsHeader;
 
-    public void verifyCorrectHeaderIsDisplayedAndroid(String header){
+
+    public void verifyCorrectHeaderIsDisplayedAndroid(String header) {
         BasePage.waitForElement(pageHeader);
         assertThat(pageHeader.getText()).isEqualToIgnoringCase(header);
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
 
-    public void verifyCorrectHeaderIsDisplayediOS(){
-        BasePage.waitForElement(favoritesText);
+    public void verifyCorrectHeaderIsDisplayediOS() {
+        BasePage.waitForElement(myAirportsHeader);
+        assertThat(myAirportsHeader.getText().contains("My Airports"));
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
 
     public void verifyAllExpectedTabsAreDisplayed() {
-        checkTabs("Can I Bring?", "TSA Pre✓®", "AskTSA", "My Profile", "My Airports");
+        checkTabs("Bring", "Pre✓", "Ask", "Profile", "Airports");
     }
 
-    public void checkTabs(String string1, String string2, String string3, String string4, String string5){
+    public void checkTabs(String string1, String string2, String string3, String string4, String string5) {
         String tabHeaders[] = {string1, string2, string3, string4, string5};
         MobileElement tabs[] = {canIBringTab, preCheckTab, askTsaTab, profileTab, myAirportsTab};
-        for (int i = 0; i<tabs.length; i++){
-            checkTab(tabs[i], tabHeaders[i]);
-        }
+        if (Serenity.sessionVariableCalled("environment").equals("android")) {
+            for (int i = 0; i < tabs.length; i++) {
+                checkTabAndroid(tabs[i], tabHeaders[i]);
+            }
+        } else
+            for (int i = 0; i < tabs.length; i++) {
+                checkTabIOS(tabs[i], tabHeaders[i]);
+            }
     }
 
-    public void checkTab(MobileElement element, String headerText){
-        BasePage.waitForElementToBeClickable(element);
-        element.click();
+
+    public void checkTabIOS(MobileElement element, String headerText) {
+        BasePage.waitForElementToBeClickable(element).click();
+        assertThat(driver.getPageSource().contains(headerText));
+    }
+
+    public void checkTabAndroid(MobileElement element, String headerText) {
+        BasePage.waitForElementToBeClickable(element).click();
         BasePage.waitForElement(pageHeader);
-        assertThat(pageHeader.getText()).isEqualToIgnoringCase(headerText);
+        assertThat(pageHeader.getText()).containsIgnoringCase(headerText);
     }
 }
