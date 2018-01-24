@@ -8,6 +8,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,6 +33,9 @@ public class TermsOfServicePage extends PageObject{
     @iOSFindBy(accessibility = "You're almost there")
     private MobileElement termsPageHeader;
 
+    @iOSFindBy(accessibility = "Ok")
+    private MobileElement okAfterDecliningTerms;
+
     public void isTermsPageDisplayedIOS() {
         driver.switchTo().alert().accept();
         Waits.waitForElement(termsPageHeader);
@@ -41,6 +45,11 @@ public class TermsOfServicePage extends PageObject{
     public void isTermsPageDisplayed() {
         Waits.waitForElement(termsPageHeader);
         Waits.waitForElement(agreeButton);
+    }
+
+    public void clickOkAfterDeclining(){
+        Waits.waitForElementToBeClickable(disagreeButton).click();
+        Waits.waitForElementToBeClickable(okAfterDecliningTerms).click();
     }
 
     public void clickAgreeButton(){

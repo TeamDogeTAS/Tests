@@ -85,6 +85,12 @@ public class MyTsaSteps extends ScenarioSteps{
         termsOfServicePage.isTermsPageDisplayedIOS();
         termsOfServicePage.clickAgreeButton();
     }
+
+    @Step
+    public void disagreeToTermsAndNotification() {
+        termsOfServicePage.isTermsPageDisplayedIOS();
+        termsOfServicePage.clickOkAfterDeclining();
+    }
     @Step
     public void viewOnboardingTutorial() {
         getStartedPage.isGetStartedBtnDisplayed();

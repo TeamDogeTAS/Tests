@@ -32,6 +32,8 @@ public class GetStartedTutorialPage extends PageObject {
     @iOSFindBy(accessibility = "Inform fellow travelers")
     private MobileElement informTitle;
 
+    @iOSFindBy(accessibility = "Next")
+    private MobileElement nextButton;
 
     public void swipeThroughPages(String page0, String page1, String page2) {
         String pageTitles[] ={page0, page1, page2};
@@ -40,6 +42,7 @@ public class GetStartedTutorialPage extends PageObject {
             assertThat(titles[i].getText().equalsIgnoreCase(pageTitles[i]));
             gestures.swipe(driver);
         }
+        Waits.waitForElementToBeClickable(nextButton).click();
     }
 
     public void isOnboardingTutorialDisplayed() {

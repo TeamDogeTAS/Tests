@@ -37,7 +37,7 @@ public class MyTSAOnboardingTest {
     }
 
     @Ignore
-    public void androidSmokeTest() {
+    public void androidOnboardingTutorialTest() {
         //set up android emulator
         myTsaSteps.setUp();
         //view Onboarding tutorial
@@ -47,7 +47,7 @@ public class MyTSAOnboardingTest {
     }
 
     @Test
-    public void iosSmokeTest() {
+    public void iosOnboardingTutorialTest() {
         //set up ios emulator
         myTsaSteps.setUp();
         //verify get started page
@@ -56,5 +56,19 @@ public class MyTSAOnboardingTest {
         myTsaSteps.viewOnboardingTutorial();
         //swipe through tutorial carousel and verify title
         myTsaSteps.swipeAndVerifyPages();
+        //click on next at the top to exit tutorial and continue set up
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.agreeToTermsAndNotification();
+    }
+
+    @Test
+    public void declineTermsOfService(){
+        myTsaSteps.setUp();
+
+        myTsaSteps.verifyGetStartedHeader();
+        myTsaSteps.verifyGetStartedBtn();
+
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.disagreeToTermsAndNotification();
     }
 }

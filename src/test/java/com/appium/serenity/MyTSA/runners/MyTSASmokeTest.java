@@ -57,11 +57,12 @@ public class MyTSASmokeTest {
 
     @Test
     public void iosSmokeTest() {
+        //set up ios emulator
         myTsaSteps.setUp();
-
+        //Get started page, skip tutorial
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
-
+        //go through onboarding setup
         myTsaSteps.startSetupProcess();
         myTsaSteps.agreeToTermsAndNotification();
 
