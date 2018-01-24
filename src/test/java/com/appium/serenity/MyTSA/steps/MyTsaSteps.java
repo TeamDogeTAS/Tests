@@ -15,6 +15,7 @@ public class MyTsaSteps extends ScenarioSteps{
     GetNotifiedPage getNotifiedPage;
     TermsOfServicePage termsOfServicePage;
     MyAirportsPage myAirportsPage;
+    GetStartedTutorialPage getStartedTutorialPage;
 
     @Step
     public void setUp() {
@@ -24,7 +25,9 @@ public class MyTsaSteps extends ScenarioSteps{
         getNotifiedPage = new GetNotifiedPage(driver);
         termsOfServicePage = new TermsOfServicePage(driver);
         myAirportsPage = new MyAirportsPage(driver);
+        getStartedTutorialPage = new GetStartedTutorialPage(driver);
     }
+
     @Step
     public void verifyUpdateCheckPage(){
         preliminaryUpdateCheckPage.isUpdateCheckPageDisplayed();
@@ -81,5 +84,15 @@ public class MyTsaSteps extends ScenarioSteps{
     public void agreeToTermsAndNotification() {
         termsOfServicePage.isTermsPageDisplayedIOS();
         termsOfServicePage.clickAgreeButton();
+    }
+    @Step
+    public void viewOnboardingTutorial() {
+        getStartedPage.isGetStartedBtnDisplayed();
+        getStartedPage.clickGetStarted();
+    }
+    @Step
+    public void swipeAndVerifyPages() {
+        getStartedTutorialPage.isOnboardingTutorialDisplayed();
+        getStartedTutorialPage.swipeThroughPages("Pack smart","Plan for your trip","Inform fellow travelers");
     }
 }

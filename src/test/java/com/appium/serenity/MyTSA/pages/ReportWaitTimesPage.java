@@ -1,6 +1,6 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.util.BasePage;
+import com.appium.serenity.MyTSA.util.Waits;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -38,14 +38,14 @@ public class ReportWaitTimesPage extends PageObject {
     private MobileElement reportWaitHeader;
 
     public void isReportWaitTimesPageDisplayed(){
-        BasePage.waitForElement(reportWaitHeader);
+        Waits.waitForElement(reportWaitHeader);
     }
 
     public void clickYesPlease() {
-        BasePage.waitForElementToBeClickable(yesPleaseButton).click();
+        Waits.waitForElementToBeClickable(yesPleaseButton).click();
     }
 
     public void allowLocationServices() {
-        BasePage.waitForElementToBeClickable(allowButton).click();
+        Waits.waitForElementToBeClickable(allowButton).click();
     }
 }

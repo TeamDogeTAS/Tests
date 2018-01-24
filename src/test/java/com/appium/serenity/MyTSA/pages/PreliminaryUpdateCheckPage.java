@@ -1,7 +1,7 @@
 package com.appium.serenity.MyTSA.pages;
 
 
-import com.appium.serenity.MyTSA.util.BasePage;
+import com.appium.serenity.MyTSA.util.Waits;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -28,7 +28,7 @@ public class PreliminaryUpdateCheckPage extends PageObject {
 
 
     public void isUpdateCheckPageDisplayed() {
-        BasePage.waitForElement(tsaUpdatePage);
+        Waits.waitForElement(tsaUpdatePage);
     }
 
 }

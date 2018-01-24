@@ -1,6 +1,6 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.util.BasePage;
+import com.appium.serenity.MyTSA.util.Waits;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -63,13 +63,13 @@ public class MyAirportsPage extends PageObject {
 
 
     public void verifyCorrectHeaderIsDisplayedAndroid(String header) {
-        BasePage.waitForElement(pageHeader);
+        Waits.waitForElement(pageHeader);
         assertThat(pageHeader.getText()).isEqualToIgnoringCase(header);
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
 
     public void verifyCorrectHeaderIsDisplayediOS() {
-        BasePage.waitForElement(myAirportsHeader);
+        Waits.waitForElement(myAirportsHeader);
         assertThat(myAirportsHeader.getText().contains("My Airports"));
         assertThat(waitTimeBanner.getText()).startsWith("Don't forget");
     }
@@ -93,13 +93,13 @@ public class MyAirportsPage extends PageObject {
 
 
     public void checkTabIOS(MobileElement element, String headerText) {
-        BasePage.waitForElementToBeClickable(element).click();
+        Waits.waitForElementToBeClickable(element).click();
         assertThat(driver.getPageSource().contains(headerText));
     }
 
     public void checkTabAndroid(MobileElement element, String headerText) {
-        BasePage.waitForElementToBeClickable(element).click();
-        BasePage.waitForElement(pageHeader);
+        Waits.waitForElementToBeClickable(element).click();
+        Waits.waitForElement(pageHeader);
         assertThat(pageHeader.getText()).containsIgnoringCase(headerText);
     }
 }

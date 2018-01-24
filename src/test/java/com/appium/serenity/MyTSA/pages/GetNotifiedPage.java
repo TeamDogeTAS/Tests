@@ -1,6 +1,6 @@
 package com.appium.serenity.MyTSA.pages;
 
-import com.appium.serenity.MyTSA.util.BasePage;
+import com.appium.serenity.MyTSA.util.Waits;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -29,10 +29,10 @@ public class GetNotifiedPage extends PageObject {
     MobileElement getNotifiedHeader;
 
     public void clickNext() {
-        BasePage.waitForElementToBeClickable(nextButton).click();
+        Waits.waitForElementToBeClickable(nextButton).click();
     }
 
     public void isGetNotifiedPageDisplayed(){
-        BasePage.waitForElement(getNotifiedHeader);
+        Waits.waitForElement(getNotifiedHeader);
     }
 }
