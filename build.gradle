@@ -24,15 +24,6 @@ buildscript {
     }
 }
 
-//test {
-//    systemProperty {
-//        'properties', '/src/test/resources/serenity.${testEnvironment}.properties'
-//        'testEnvironment', '${testEnvironment}'
-//        'enableSerenity', 'true'
-//    }
-//    include '**/*Test.class'
-//}
-
 dependencies {
     compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.8.21'
     compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.8.21'

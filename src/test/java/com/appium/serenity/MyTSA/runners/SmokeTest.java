@@ -6,11 +6,14 @@ import com.appium.serenity.MyTSA.steps.MyTsaSteps;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static com.appium.serenity.MyTSA.util.HelperMethods.readAndGrabProps;
 
 
 @RunWith(SerenityRunner.class)
@@ -21,13 +24,12 @@ public class SmokeTest {
     @Steps
     MyTsaSteps myTsaSteps;
 
-    String os = "ios";
-
     @Before
     public void setUp(){
         try {
+            String os = readAndGrabProps("environment");
             Serenity.setSessionVariable("environment").to(os);
-            beforeAndAfter.startUp(Serenity.sessionVariableCalled("environment"));
+            beforeAndAfter.startUp(os);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,9 +41,10 @@ public class SmokeTest {
     }
 
     @Ignore
+    @WithTag("test:android smoke test")
     public void androidSmokeTest() {
 
-        myTsaSteps.setUp();
+        myTsaSteps.testSetUp();
         myTsaSteps.verifyUpdateCheckPage();
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
@@ -56,9 +59,10 @@ public class SmokeTest {
     }
 
     @Test
+    @WithTag("test:ios smoke test")
     public void iosSmokeTest() {
         //set up ios emulator
-        myTsaSteps.setUp();
+        myTsaSteps.testSetUp();
         //Get started page, skip tutorial
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();

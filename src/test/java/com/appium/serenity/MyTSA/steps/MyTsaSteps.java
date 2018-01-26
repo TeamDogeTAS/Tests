@@ -18,7 +18,7 @@ public class MyTsaSteps extends ScenarioSteps{
     GetStartedTutorialPage getStartedTutorialPage;
 
     @Step
-    public void setUp() {
+    public void testSetUp() {
         preliminaryUpdateCheckPage = new PreliminaryUpdateCheckPage(driver);
         getStartedPage = new GetStartedPage(driver);
         reportWaitTimesPage = new ReportWaitTimesPage(driver);
