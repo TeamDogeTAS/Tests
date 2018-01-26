@@ -1,5 +1,6 @@
 package com.appium.serenity.MyTSA.runners;
 
+
 import com.appium.serenity.MyTSA.steps.BeforeAndAfter;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
 import net.serenitybdd.core.Serenity;
@@ -11,8 +12,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 @RunWith(SerenityRunner.class)
-public class MyTSAOnboardingTest {
+public class SmokeTest {
 
     @Steps
     BeforeAndAfter beforeAndAfter;
@@ -37,38 +39,35 @@ public class MyTSAOnboardingTest {
     }
 
     @Ignore
-    public void androidOnboardingTutorialTest() {
-        //set up android emulator
+    public void androidSmokeTest() {
+
         myTsaSteps.setUp();
-        //view Onboarding tutorial
         myTsaSteps.verifyUpdateCheckPage();
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
+
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.allowLocationServiceSetUp();
+        myTsaSteps.agreeToTerms();
+
+        myTsaSteps.verifyMyAirportsPageOnAndroid();
+
+        myTsaSteps.checkPagesForCorrectnessAndroid();
     }
 
     @Test
-    public void iosOnboardingTutorialTest() {
+    public void iosSmokeTest() {
         //set up ios emulator
         myTsaSteps.setUp();
-        //verify get started page
-        myTsaSteps.verifyGetStartedHeader();
-        //tap on get started
-        myTsaSteps.viewOnboardingTutorial();
-        //swipe through tutorial carousel and verify title
-        myTsaSteps.swipeAndVerifyPages();
-        //click on next at the top to exit tutorial and continue set up
-        myTsaSteps.startSetupProcess();
-        myTsaSteps.agreeToTermsAndNotification();
-    }
-
-    @Test
-    public void declineTermsOfService(){
-        myTsaSteps.setUp();
-
+        //Get started page, skip tutorial
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
-
+        //go through onboarding setup
         myTsaSteps.startSetupProcess();
-        myTsaSteps.disagreeToTermsAndNotification();
+        myTsaSteps.agreeToTermsAndNotification();
+
+        myTsaSteps.verifyMyAirportsPageOnIos();
+
+        myTsaSteps.checkPagesForCorrectnessIOS();
     }
 }

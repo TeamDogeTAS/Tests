@@ -1,20 +1,18 @@
 package com.appium.serenity.MyTSA.runners;
 
-
 import com.appium.serenity.MyTSA.steps.BeforeAndAfter;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-
 @RunWith(SerenityRunner.class)
-public class MyTSASmokeTest {
+public class DeclineTermsOfService extends PageObject{
 
     @Steps
     BeforeAndAfter beforeAndAfter;
@@ -38,36 +36,14 @@ public class MyTSASmokeTest {
         beforeAndAfter.stopDriver();
     }
 
-    @Ignore
-    public void androidSmokeTest() {
-
-        myTsaSteps.setUp();
-        myTsaSteps.verifyUpdateCheckPage();
-        myTsaSteps.verifyGetStartedHeader();
-        myTsaSteps.verifyGetStartedBtn();
-
-        myTsaSteps.startSetupProcess();
-        myTsaSteps.allowLocationServiceSetUp();
-        myTsaSteps.agreeToTerms();
-
-        myTsaSteps.verifyMyAirportsPageOnAndroid();
-
-        myTsaSteps.checkPagesForCorrectnessAndroid();
-    }
-
     @Test
-    public void iosSmokeTest() {
-        //set up ios emulator
+    public void declineTermsOfService(){
         myTsaSteps.setUp();
-        //Get started page, skip tutorial
+
         myTsaSteps.verifyGetStartedHeader();
         myTsaSteps.verifyGetStartedBtn();
-        //go through onboarding setup
+
         myTsaSteps.startSetupProcess();
-        myTsaSteps.agreeToTermsAndNotification();
-
-        myTsaSteps.verifyMyAirportsPageOnIos();
-
-        myTsaSteps.checkPagesForCorrectnessIOS();
+        myTsaSteps.disagreeToTermsAndNotification();
     }
 }
