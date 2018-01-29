@@ -8,9 +8,10 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TermsOfServicePage extends PageObject{
 
@@ -34,7 +35,11 @@ public class TermsOfServicePage extends PageObject{
     private MobileElement termsPageHeader;
 
     @iOSFindBy(accessibility = "Ok")
+    @AndroidFindBy(id = "android:id/button1")
     private MobileElement okAfterDecliningTerms;
+
+    @AndroidFindBy(id = "android:id/message")
+    private MobileElement messageAfterDeclining;
 
     public void isTermsPageDisplayedIOS() {
         driver.switchTo().alert().accept();
@@ -54,5 +59,16 @@ public class TermsOfServicePage extends PageObject{
 
     public void clickAgreeButton(){
         Waits.waitForElementToBeClickable(agreeButton).click();
+    }
+
+    public void declineTerms() {
+        Waits.waitForElementToBeClickable(disagreeButton).click();
+        Waits.waitForElement(messageAfterDeclining);
+        assertThat(messageAfterDeclining.getText()
+                .contains("You must agree to the terms of service in order to use this app."));
+    }
+
+    public void clickOkAndCloseApp() {
+        Waits.waitForElementToBeClickable(okAfterDecliningTerms).click();
     }
 }

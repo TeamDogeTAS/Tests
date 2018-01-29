@@ -87,7 +87,7 @@ public class MyTsaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void disagreeToTermsAndNotification() {
+    public void disagreeToTermsAndNotificationIOS() {
         termsOfServicePage.isTermsPageDisplayedIOS();
         termsOfServicePage.clickOkAfterDeclining();
     }
@@ -100,5 +100,15 @@ public class MyTsaSteps extends ScenarioSteps{
     public void swipeAndVerifyPages() {
         getStartedTutorialPage.isOnboardingTutorialDisplayed();
         getStartedTutorialPage.swipeThroughPages("Pack smart","Plan for your trip","Inform fellow travelers");
+    }
+    @Step
+    public void resetTheApp() {
+        driver.closeApp();
+        driver.resetApp();
+    }
+    @Step
+    public void disagreeToTermsAndNotificationAndroid() {
+        termsOfServicePage.declineTerms();
+        termsOfServicePage.clickOkAndCloseApp();
     }
 }

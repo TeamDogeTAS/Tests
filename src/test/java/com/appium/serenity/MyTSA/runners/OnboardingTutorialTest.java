@@ -25,35 +25,63 @@ public class OnboardingTutorialTest {
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         try {
-            beforeAndAfter.startUp(readAndGrabProps("environment"));
+            String os = readAndGrabProps("environment");
+            Serenity.setSessionVariable("environment").to(os);
+            beforeAndAfter.startUp(os);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     @After
     public void tearDown() {
         beforeAndAfter.stopDriver();
     }
 
     @Ignore
-    @WithTag("test:android onboarding test")
+    @WithTag(name = "android test")
     public void androidOnboardingTutorialTest() {
         //set up android emulator
         myTsaSteps.testSetUp();
+
+        myTsaSteps.verifyGetStartedHeader();
+        myTsaSteps.verifyGetStartedBtn();
+
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.allowLocationServiceSetUp();
+        myTsaSteps.disagreeToTermsAndNotificationAndroid();
+
+        myTsaSteps.resetTheApp();
+
         //view Onboarding tutorial
         myTsaSteps.verifyUpdateCheckPage();
         myTsaSteps.verifyGetStartedHeader();
-        myTsaSteps.verifyGetStartedBtn();
+        //tap on get started
+        myTsaSteps.viewOnboardingTutorial();
+        //swipe through tutorial carousel and verify title
+        myTsaSteps.swipeAndVerifyPages();
+        //click on next at the top to exit tutorial and continue set up
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.allowLocationServiceSetUp();
+        myTsaSteps.agreeToTerms();
     }
 
     @Test
-    @WithTag("test:ios onboarding test")
+    @WithTag(name = "ios test")
     public void iosOnboardingTutorialTest() {
         //set up ios emulator
         myTsaSteps.testSetUp();
+
+        myTsaSteps.verifyGetStartedHeader();
+        myTsaSteps.verifyGetStartedBtn();
+
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.disagreeToTermsAndNotificationIOS();
+
+
+        myTsaSteps.resetTheApp();
+
         //verify get started page
         myTsaSteps.verifyGetStartedHeader();
         //tap on get started
@@ -63,5 +91,6 @@ public class OnboardingTutorialTest {
         //click on next at the top to exit tutorial and continue set up
         myTsaSteps.startSetupProcess();
         myTsaSteps.agreeToTermsAndNotification();
+
     }
 }

@@ -11,10 +11,18 @@ import java.util.HashMap;
 
 public class Gestures {
 
-    public static void swipe(AppiumDriver driver){
+    public static void swipeIOS(AppiumDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         HashMap<String, String> swipeObject = new HashMap<String, String>();
         swipeObject.put("direction", "left");
         js.executeScript("mobile: swipe", swipeObject);
     }
+
+    public static void swipeAndroid(AppiumDriver driver) {
+        TouchAction action = new TouchAction(driver);
+        action.press(PointOption.point(-352, 0))
+                .moveTo(PointOption.point(352,0))
+                .release().perform();
+    }
+
 }

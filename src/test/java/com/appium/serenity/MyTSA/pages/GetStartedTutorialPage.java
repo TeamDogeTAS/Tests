@@ -4,8 +4,10 @@ import com.appium.serenity.MyTSA.util.Gestures;
 import com.appium.serenity.MyTSA.util.Waits;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.PageFactory;
 
@@ -32,20 +34,41 @@ public class GetStartedTutorialPage extends PageObject {
     @iOSFindBy(accessibility = "Inform fellow travelers")
     private MobileElement informTitle;
 
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/pager_header")
+    private MobileElement androidTitles;
+
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/tutorial_next_arrow")
+    private MobileElement androidNextArrow;
+
     @iOSFindBy(accessibility = "Next")
+    @AndroidFindBy(id = "gov.dhs.tsa.mytsa.ite.dev:id/tutorial_button_skip")
     private MobileElement nextButton;
 
     public void swipeThroughPages(String page0, String page1, String page2) {
-        String pageTitles[] ={page0, page1, page2};
-        MobileElement titles[] = {packSmartTitle, planTitle, informTitle};
-        for(int i = 0; i <titles.length-1; i++){
-            assertThat(titles[i].getText().equalsIgnoreCase(pageTitles[i]));
-            gestures.swipe(driver);
+        String pageTitles[] = {page0, page1, page2};
+        if (Serenity.sessionVariableCalled("environment").toString().equalsIgnoreCase("ios")) {
+            MobileElement titles[] = {packSmartTitle, planTitle, informTitle};
+            for (int i = 0; i < titles.length - 1; i++) {
+                assertThat(titles[i].getText().equalsIgnoreCase(pageTitles[i]));
+                gestures.swipeIOS(driver);
+            }
+        } else {
+            for (int i = 0; i < pageTitles.length - 1; i++) {
+                Waits.waitForElement(androidTitles);
+                System.out.println(androidTitles.getText());
+                assertThat(pageTitles[i].equalsIgnoreCase(androidTitles.getText()));
+                Waits.waitForElementToBeClickable(androidNextArrow).click();
+            }
         }
+
         Waits.waitForElementToBeClickable(nextButton).click();
     }
 
     public void isOnboardingTutorialDisplayed() {
-        Waits.waitForElement(packSmartTitle);
+        if (Serenity.sessionVariableCalled("environment").toString().equalsIgnoreCase("ios"))
+            Waits.waitForElement(packSmartTitle);
+        else
+            Waits.waitForElement(androidTitles);
+
     }
 }
