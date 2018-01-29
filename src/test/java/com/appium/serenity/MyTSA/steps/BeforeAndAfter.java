@@ -1,14 +1,11 @@
 package com.appium.serenity.MyTSA.steps;
 
-import com.appium.serenity.MyTSA.pages.*;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BeforeAndAfter {
@@ -40,8 +37,6 @@ public class BeforeAndAfter {
     }
 
     public void stopDriver() {
-        if (driver != null) {
             driver.quit();
-        }
     }
 }
