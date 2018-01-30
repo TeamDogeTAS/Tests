@@ -48,4 +48,8 @@ public class ReportWaitTimesPage extends PageObject {
     public void allowLocationServices() {
         Waits.waitForElementToBeClickable(allowButton).click();
     }
+
+    public void doNotAllow() {
+        Waits.waitForElementToBeClickable(dontAllowButton).click();
+    }
 }

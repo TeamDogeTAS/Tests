@@ -6,6 +6,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindBy;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,10 +30,13 @@ public class GetNotifiedPage extends PageObject {
     MobileElement getNotifiedHeader;
 
     public void clickNext() {
+        if(Serenity.sessionVariableCalled("environment").equals("ios")){
+            getDriver().switchTo().alert().accept();
+        }
         Waits.waitForElementToBeClickable(nextButton).click();
     }
 
-    public void isGetNotifiedPageDisplayed(){
+    public void isGetNotifiedPageDisplayed() {
         Waits.waitForElement(getNotifiedHeader);
     }
 }

@@ -40,24 +40,20 @@ public class MyTsaSteps extends ScenarioSteps{
 
     @Step
     public void verifyGetStartedBtn(){
-        getStartedPage.isGetStartedBtnDisplayed();
         getStartedPage.clickSkipButton();
     }
     @Step
     public void allowLocationServiceSetUp() {
-        reportWaitTimesPage.isReportWaitTimesPageDisplayed();
         reportWaitTimesPage.clickYesPlease();
         reportWaitTimesPage.allowLocationServices();
     }
     @Step
     public void agreeToTerms(){
-        termsOfServicePage.isTermsPageDisplayed();
         termsOfServicePage.clickAgreeButton();
     }
 
     @Step
     public void startSetupProcess() {
-        getNotifiedPage.isGetNotifiedPageDisplayed();
         getNotifiedPage.clickNext();
     }
     @Step
@@ -82,33 +78,32 @@ public class MyTsaSteps extends ScenarioSteps{
 
     @Step
     public void agreeToTermsAndNotification() {
-        termsOfServicePage.isTermsPageDisplayedIOS();
         termsOfServicePage.clickAgreeButton();
     }
 
     @Step
     public void disagreeToTermsAndNotificationIOS() {
-        termsOfServicePage.isTermsPageDisplayedIOS();
         termsOfServicePage.clickOkAfterDeclining();
     }
     @Step
     public void viewOnboardingTutorial() {
-        getStartedPage.isGetStartedBtnDisplayed();
         getStartedPage.clickGetStarted();
     }
     @Step
     public void swipeAndVerifyPages() {
-        getStartedTutorialPage.isOnboardingTutorialDisplayed();
         getStartedTutorialPage.swipeThroughPages("Pack smart","Plan for your trip","Inform fellow travelers");
     }
     @Step
     public void resetTheApp() {
-        driver.closeApp();
         driver.resetApp();
     }
     @Step
     public void disagreeToTermsAndNotificationAndroid() {
         termsOfServicePage.declineTerms();
         termsOfServicePage.clickOkAndCloseApp();
+    }
+    @Step
+    public void doNotAllowLocationServices() {
+        reportWaitTimesPage.doNotAllow();
     }
 }

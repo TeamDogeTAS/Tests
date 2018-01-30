@@ -55,7 +55,6 @@ public class GetStartedTutorialPage extends PageObject {
         } else {
             for (int i = 0; i < pageTitles.length - 1; i++) {
                 Waits.waitForElement(androidTitles);
-                System.out.println(androidTitles.getText());
                 assertThat(pageTitles[i].equalsIgnoreCase(androidTitles.getText()));
                 Waits.waitForElementToBeClickable(androidNextArrow).click();
             }

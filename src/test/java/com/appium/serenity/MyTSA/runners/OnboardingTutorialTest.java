@@ -2,7 +2,6 @@ package com.appium.serenity.MyTSA.runners;
 
 import com.appium.serenity.MyTSA.steps.BeforeAndAfter;
 import com.appium.serenity.MyTSA.steps.MyTsaSteps;
-import com.appium.serenity.MyTSA.util.HelperMethods;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
@@ -34,13 +33,14 @@ public class OnboardingTutorialTest {
             e.printStackTrace();
         }
     }
+
     @After
     public void tearDown() {
         beforeAndAfter.stopDriver();
     }
 
-    @Ignore
     @WithTag(name = "android test")
+    @Test
     public void androidOnboardingTutorialTest() {
         //set up android emulator
         myTsaSteps.testSetUp();
@@ -51,6 +51,14 @@ public class OnboardingTutorialTest {
         myTsaSteps.startSetupProcess();
         myTsaSteps.allowLocationServiceSetUp();
         myTsaSteps.disagreeToTermsAndNotificationAndroid();
+
+        myTsaSteps.resetTheApp();
+
+        myTsaSteps.verifyGetStartedHeader();
+        myTsaSteps.verifyGetStartedBtn();
+        myTsaSteps.startSetupProcess();
+        myTsaSteps.doNotAllowLocationServices();
+        myTsaSteps.agreeToTerms();
 
         myTsaSteps.resetTheApp();
 
@@ -65,10 +73,12 @@ public class OnboardingTutorialTest {
         myTsaSteps.startSetupProcess();
         myTsaSteps.allowLocationServiceSetUp();
         myTsaSteps.agreeToTerms();
-    }
 
-    @Test
+        myTsaSteps.verifyMyAirportsPageOnAndroid();
+        myTsaSteps.checkPagesForCorrectnessAndroid();
+    }
     @WithTag(name = "ios test")
+    @Ignore
     public void iosOnboardingTutorialTest() {
         //set up ios emulator
         myTsaSteps.testSetUp();
@@ -92,5 +102,7 @@ public class OnboardingTutorialTest {
         myTsaSteps.startSetupProcess();
         myTsaSteps.agreeToTermsAndNotification();
 
+        myTsaSteps.verifyMyAirportsPageOnIos();
+        myTsaSteps.checkPagesForCorrectnessIOS();
     }
 }
