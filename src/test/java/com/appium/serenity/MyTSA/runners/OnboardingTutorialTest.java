@@ -63,7 +63,6 @@ public class OnboardingTutorialTest {
         myTsaSteps.resetTheApp();
 
         //view Onboarding tutorial
-        myTsaSteps.verifyUpdateCheckPage();
         myTsaSteps.verifyGetStartedHeader();
         //tap on get started
         myTsaSteps.viewOnboardingTutorial();
@@ -73,9 +72,9 @@ public class OnboardingTutorialTest {
         myTsaSteps.startSetupProcess();
         myTsaSteps.allowLocationServiceSetUp();
         myTsaSteps.agreeToTerms();
-
-        myTsaSteps.verifyMyAirportsPageOnAndroid();
-        myTsaSteps.checkPagesForCorrectnessAndroid();
+//
+//        myTsaSteps.verifyMyAirportsPageOnAndroid();
+//        myTsaSteps.checkPagesForCorrectnessAndroid();
     }
     @WithTag(name = "ios test")
     @Ignore
