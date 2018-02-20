@@ -22,7 +22,6 @@ public class OnboardingTutorialTest {
     @Steps
     MyTsaSteps myTsaSteps;
 
-
     @Before
     public void setUp() {
         try {
@@ -72,7 +71,7 @@ public class OnboardingTutorialTest {
         myTsaSteps.startSetupProcess();
         myTsaSteps.allowLocationServiceSetUp();
         myTsaSteps.agreeToTerms();
-//
+
 //        myTsaSteps.verifyMyAirportsPageOnAndroid();
 //        myTsaSteps.checkPagesForCorrectnessAndroid();
     }

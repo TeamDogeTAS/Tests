@@ -62,10 +62,11 @@ public class TermsOfServicePage extends PageObject{
     }
 
     public void declineTerms() {
+        Waits.waitForElement(termsPageHeader);
         Waits.waitForElementToBeClickable(disagreeButton).click();
         Waits.waitForElement(messageAfterDeclining);
-        assertThat(messageAfterDeclining.getText()
-                .contains("You must agree to the terms of service in order to use this app."));
+        assertThat(messageAfterDeclining.getText())
+                .contains("You must agree to the terms of service in order to use this app.");
     }
 
     public void clickOkAndCloseApp() {
